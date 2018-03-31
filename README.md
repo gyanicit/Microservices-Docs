@@ -86,7 +86,7 @@ Note: bootstrap.property file get loaded before all resources so that those conf
     }
 
 ## Config Server Security
-
+Keep configuration details open to all is very risky so it is mandatory to enable password security into config server to protect all configuration details are very crucial. In order to do this you have to do following steps into your Cloud Config and each Config Client (Module).
 **Step 1:** Add following dependency in Config Server POM
 ```xml
 <dependency>
