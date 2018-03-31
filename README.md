@@ -65,4 +65,30 @@ Note: bootstrap.property file get loaded before all resources so that those conf
 > **spring.cloud.config.uri=http://localhost:8888**<br/>
 **Step 5:** Create ReST endpoint to check whether your config client is able to get configuration details from Config Server or Not<br/>
 
+    @RestController
+    public class CommonController {
+	
+	   @Value("${portal.jdbc.url:default url}")
+	   String url;
+	   @Value("${portal.jdbc.user:default user}")
+	   String userName;
+	   @Value("${portal.jdbc.password:default password}")
+	   String password;
+	
+	   @RequestMapping(value="/getProperty", method=RequestMethod.GET)
+	   public String displayProperty() {
+		   Map<String,String> m=new HashMap<String,String>();
+		   m.put("url", url);
+		   m.put("userName", userName);
+		   m.put("password", password);
+		   return m.toString();
+	   }
+    }
 
+## Config Server Security
+
+**Step 1:** Add following dependency in Config Server POM
+   <dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-security</artifactId>
+   </dependency>
