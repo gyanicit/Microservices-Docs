@@ -47,3 +47,22 @@ So config server need to configure to provide all configuration at one place. Ea
 http://localhost:8888/myapp1/production
 
 ## Config Client
+
+Config Client features enable microservices instanc to read configuration details like DB credential SMTP credential for **Config Server**
+
+**Step 1:** Goto Window Menu -> Change Perspective ‘Spring’<br>
+**Step 2:** Goto File Menu -> New -> Spring Starter Project -> Type Project Name -> Next -> Select Config Client [You can select MVC and other required dependencies for your module] -> Click on Finish<br/>
+**Step 3:** Goto application.properties/yml file and specify following:
+> #Port to run Config Server<br/>
+> **server.port=8080**
+
+**Step 4:** Goto resources folder and create bootstrap.properties file.<br/>
+Note: bootstrap.property file get loaded before all resources so that those configuration which required get loaded before application.property must be placed inside it.<br/>
+> #application name play very important role it is basically property file name in your Config Server<br/>
+> **spring.application.name=myapp1-production**<br/>
+> **spring.profiles.active=default**<br/>
+> #Fallback URI of Config Server<br/>
+> **spring.cloud.config.uri=http://localhost:8888**<br/>
+**Step 5:** Create ReST endpoint to check whether your config client is able to get configuration details from Config Server or Not<br/>
+
+
