@@ -30,3 +30,20 @@ Eureka Client feature must be enabled each and every microdervices (Real module)
 > **eureka.client.service-url.defaultZone=http://localhost:8761/eureka**<br/>
 > #Eureka Client instance ID. Note: Default Instance Id will be as ‘SERVICE-NAME/PHISICAL-MACHIME-NAME:PORT’<br/>
 > **eureka.instance.instance-id=${spring.application.name}:${random.port}**<br/>
+
+## Config Server (File System)
+If you are going with Microservices architecture so you will face configuration overhead for all instances of application.
+So config server need to configure to provide all configuration at one place. Each microservice when wakeup then it will raed all configuration from this Config Server
+
+**Step 1:** Goto Window Menu -> Change Perspective ‘Spring’<br/>
+**Step 2:** Goto File Menu -> New -> Spring Starter Project -> Type Project Name -> Next -> Select Config Server -> Click on Finish<br/>
+**Step 3:** Annotate @EnableConfigServer (It will add capability for Config Server.) at Spring runner class to enable this microservice as Config Server to provide central configuration details (like db connection details, SMTP details) for other Client (Microservices) for consumtion.<br/>
+**Step 4:** Goto application.properties/yml file and specify following:<br/>
+
+> #Port to run Config Server
+> **server.port=8888*
+
+**Step 6:** Now your Config server is ready to provide configuration details from file system, Click on run button and type following URL to get configuration details like this.<br/>
+http://localhost:8888/myapp1/production
+
+## Config Client
