@@ -88,7 +88,20 @@ Note: bootstrap.property file get loaded before all resources so that those conf
 ## Config Server Security
 
 **Step 1:** Add following dependency in Config Server POM
-   <dependency>
-   <groupId>org.springframework.boot</groupId>
-   <artifactId>spring-boot-starter-security</artifactId>
-   </dependency>
+```xml
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-security</artifactId>
+</dependency> 
+```
+
+**Step 2:** Set following property in bootstrap.properties file of Config Server<br/>
+> security.basic.enabled=true<br/>
+> security.user.name=rootUser<br/>
+> security.user.password=1234<br/>
+
+**Step 3:** Set following property in bootstrap.property file of Config Client<br/>
+> spring.cloud.config.username=rootUser<br/>
+> spring.cloud.config.password=1234<br/>
+
+
