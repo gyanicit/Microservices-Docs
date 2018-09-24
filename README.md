@@ -104,4 +104,6 @@ Keep configuration details open to all is very risky so it is mandatory to enabl
 > spring.cloud.config.username=rootUser<br/>
 > spring.cloud.config.password=1234<br/>
 
+## Proxy Gateway (Zuul)
+Proxy gateway is used to provide single entry point to expose Rest APIs for outside world. Based on your URI prefix pattern it resolve the serviceId configured into application.property and make a request to Registery Server to get particular service base URL. after getting Base URL it makes actual call to that particular Microservice and return response on behalf of that microservice.
 
